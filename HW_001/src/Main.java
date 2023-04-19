@@ -1,28 +1,26 @@
 import units.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        Unit bandit = new Bandit();
-        Unit sniper = new Sniper();
-        Unit mage = new Mage();
-        Unit crossbowman = new Crossbowman();
-        Unit monk = new Monk();
-        Unit peasant = new Peasant();
-        Unit pikeman = new Pikeman();
+        List<Unit> list = new ArrayList<>();
+        list.add(new Bandit());
+        list.add(new Sniper());
+        list.add(new Mage());
+        list.add(new Crossbowman());
+        list.add(new Monk());
+        list.add(new Peasant());
+        list.add(new Pikeman());
 
-        System.out.println(bandit);
-        System.out.println(sniper);
-        System.out.println(mage);
-        System.out.println(crossbowman);
-        System.out.println(monk);
-        System.out.println(peasant);
-        System.out.println(pikeman);
+        list.forEach(Unit::getInfo);
 
-        System.out.println("хп бандита до урона: " + bandit.getHp());
-        ((Sniper) sniper).attack(bandit);
-        System.out.println("хп бандита после урона: " + bandit.getHp());
+//        System.out.println("хп бандита до урона: " + bandit.getHp());
+//        ((Sniper) sniper).attack(bandit);
+//        System.out.println("хп бандита после урона: " + bandit.getHp());
     }
 
 
