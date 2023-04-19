@@ -4,13 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Bandit bandit = new Bandit();
-        Sniper sniper = new Sniper();
-        Mage mage = new Mage();
-        Crossbowman crossbowman = new Crossbowman();
-        Monk monk = new Monk();
-        Peasant peasant = new Peasant();
-        Pikeman pikeman = new Pikeman();
+        Unit bandit = new Bandit();
+        Unit sniper = new Sniper();
+        Unit mage = new Mage();
+        Unit crossbowman = new Crossbowman();
+        Unit monk = new Monk();
+        Unit peasant = new Peasant();
+        Unit pikeman = new Pikeman();
 
         System.out.println(bandit);
         System.out.println(sniper);
@@ -21,7 +21,7 @@ public class Main {
         System.out.println(pikeman);
 
         System.out.println("хп бандита до урона: " + bandit.getHp());
-        sniper.attack(bandit);
+        ((Sniper) sniper).attack(bandit);
         System.out.println("хп бандита после урона: " + bandit.getHp());
     }
 

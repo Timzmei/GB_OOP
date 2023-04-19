@@ -1,6 +1,6 @@
 package units;
 
-public class Monk extends Unit{
+public class Monk extends Unit implements Healer{
     public Monk() {
         super(String.format("Monk #%d", ++Monk.number));
         super.faction = "Asylum";
@@ -13,6 +13,11 @@ public class Monk extends Unit{
 
         super.movement = 19;
         super.speed = 5;
+    }
+
+    @Override
+    public void healer(Unit unit, int hp) {
+        unit.setHp(Math.min(hp + unit.getHp(), unit.getMaxHp()));
     }
 
     @Override

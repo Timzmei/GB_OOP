@@ -1,6 +1,6 @@
 package units;
 
-public class Bandit extends Unit{
+public class Bandit extends Unit implements Warrior{
 
     public Bandit() {
         super(String.format("Bandit #%d", ++Bandit.number));
@@ -17,10 +17,22 @@ public class Bandit extends Unit{
 
     @Override
     public void attack(Unit unit) {
+        System.out.println(this.name + " attack " + unit.name);
+
         if (this.damage > unit.defense) {
-            unit.setHp(unit.getHp() - this.damage + unit.getDefense());
+            setUnitDamage(unit, this.damage + unit.getDefense());
         } else {
-            unit.setHp((int) (unit.getHp() - (this.damage / unit.getDefense()) * 1.5));
+            setUnitDamage(unit, (this.damage / unit.getDefense()));
+        }
+
+    }
+
+    @Override
+    public void setUnitDamage(Unit unit, int damage) {
+        if (unit.getHp() - damage > 0) {
+            unit.setHp(unit.getHp() - damage);
+        } else {
+            unit.setHp(0);
         }
     }
 

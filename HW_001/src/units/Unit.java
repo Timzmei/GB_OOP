@@ -2,7 +2,7 @@ package units;
 
 import java.util.Random;
 
-public abstract class Unit {
+public abstract class Unit implements GameInterface{
 
     protected static int number;
     protected static Random r;
@@ -39,6 +39,10 @@ public abstract class Unit {
         return cost;
     }
 
+    public int getMaxHp() {
+        return maxHp;
+    }
+
     public int getLevel() {
         return level;
     }
@@ -71,36 +75,30 @@ public abstract class Unit {
         }
     }
 
+    @Override
+    public void getInfo() {
+        System.out.println("Unit{" +
+                "name='" + name + '\'' +
+                ", faction='" + faction + '\'' +
+                ", cost=" + cost +
+                ", level=" + level +
+                ", defense=" + defense +
+                ", damage=" + damage +
+                ", hp=" + hp +
+                ", maxHp=" + maxHp +
+                ", movement=" + movement +
+                ", speed=" + speed +
+                '}');
+    }
+
+    @Override
+    public void step() {
+
+    }
+
     private void setDefense(int defense) {
         this.defense = defense;
     }
-
-    public void attack(Unit unit) {
-        System.out.println(this.name + " attack " + unit.name);
-
-        if (this.damage > unit.defense) {
-            setUnitDamage(unit, this.damage + unit.getDefense());
-        } else {
-            setUnitDamage(unit, (this.damage / unit.getDefense()));
-        }
-
-    }
-
-    private void setUnitDamage(Unit unit, int damage) {
-
-        if (unit.getHp() - damage > 0) {
-            unit.setHp(unit.getHp() - damage);
-        } else {
-            unit.setHp(0);
-        }
-    }
-
-    public void healed(int hp) {
-        this.hp = Math.min(hp + this.hp, this.maxHp);
-    }
-
-
-
 
 
 }
