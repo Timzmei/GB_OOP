@@ -1,5 +1,6 @@
 package units;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Unit implements GameInterface{
@@ -17,18 +18,44 @@ public abstract class Unit implements GameInterface{
     protected int maxHp;
     protected int movement;
     protected int speed;
+    protected int initiative;
+    protected ArrayList<Unit> banda;
 
     static {
         Unit.number = 0;
         Unit.r = new Random();
     }
 
-    public Unit() {
-        this(String.format("Hero #%d", ++Unit.number));
+//    public Unit() {
+//        this(String.format("Hero #%d", ++Unit.number));
+//    }
+
+//    public Unit(String name) {
+//        this.name = name;
+//    }
+
+
+    public Unit(String name, String faction, int cost, int level, int defense, int damage, int maxHp, int hp, int movement, int speed, int initiative, ArrayList banda) {
+        this.name = name;
+        this.faction = faction;
+        this.cost = cost;
+        this.level = level;
+        this.defense = defense;
+        this.damage = damage;
+        this.maxHp = maxHp;
+        this.hp = hp;
+        this.movement = movement;
+        this.speed = speed;
+        this.initiative = initiative;
+        this.banda = banda;
     }
 
-    public Unit(String name) {
-        this.name = name;
+    public int getInitiative() {
+        return initiative;
+    }
+
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
     }
 
     public String getFaction() {

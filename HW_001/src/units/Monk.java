@@ -1,18 +1,21 @@
 package units;
 
-public class Monk extends Unit implements Healer{
-    public Monk() {
-        super(String.format("Monk #%d", ++Monk.number));
-        super.faction = "Asylum";
-        super.cost = 550;
-        super.damage = 15;
-        super.defense = 22;
-        super.level = 3;
-        super.maxHp = 55;
-        super.hp = maxHp;
+import java.util.ArrayList;
 
-        super.movement = 19;
-        super.speed = 5;
+public class Monk extends Unit implements Healer{
+    public Monk(ArrayList<Unit> banda) {
+        super(String.format("Monk #%d", ++Bandit.number),
+                "Asylum",
+                550,
+                3,
+                22,
+                15,
+                55,
+                55,
+                19,
+                5,
+                2,
+                banda);
     }
 
     @Override

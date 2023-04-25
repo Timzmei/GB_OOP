@@ -1,18 +1,21 @@
 package units;
 
-public class Pikeman extends Unit implements Warrior{
-    public Pikeman() {
-        super(String.format("Pikeman #%d", ++Pikeman.number));
-        super.faction = "Asylum";
-        super.cost = 150;
-        super.damage = 8;
-        super.defense = 14;
-        super.level = 2;
-        super.maxHp = 30;
-        super.hp = maxHp;
+import java.util.ArrayList;
 
-        super.movement = 19;
-        super.speed = 4;
+public class Pikeman extends Unit implements Warrior{
+    public Pikeman(ArrayList<Unit> banda) {
+        super(String.format("Pikeman #%d", ++Bandit.number),
+                "Asylum",
+                150,
+                2,
+                14,
+                8,
+                30,
+                30,
+                19,
+                4,
+                4,
+                banda);
     }
 
     @Override

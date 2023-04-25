@@ -1,18 +1,23 @@
 package units;
 
+import java.util.ArrayList;
+
 public class Bandit extends Unit implements Warrior{
 
-    public Bandit() {
-        super(String.format("Bandit #%d", ++Bandit.number));
-        super.faction = "Asylum";
-        super.cost = 20;
-        super.damage = 3;
-        super.defense = 9;
-        super.level = 1;
-        super.maxHp = 10;
-        super.hp = maxHp;
-        super.movement = 23;
-        super.speed = 7;
+    public Bandit(ArrayList<Unit> banda) {
+        super(String.format("Bandit #%d", ++Bandit.number),
+                "Asylum",
+                20,
+                3,
+                9,
+                1,
+                10,
+                10,
+                23,
+                7,
+                6,
+                banda);
+
     }
 
     @Override

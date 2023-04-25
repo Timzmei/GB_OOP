@@ -1,18 +1,21 @@
 package units;
 
-public class Sniper extends Unit implements Warrior {
-    public Sniper() {
-        super(String.format("Sniper #%d", ++Sniper.number));
-        super.faction = "Asylum";
-        super.cost = 440;
-        super.damage = 30;
-        super.defense = 10;
-        super.level = 3;
-        super.maxHp = 40;
-        super.hp = maxHp;
+import java.util.ArrayList;
 
-        super.movement = 19;
-        super.speed = 5;
+public class Sniper extends Unit implements Warrior {
+    public Sniper(ArrayList<Unit> banda) {
+        super(String.format("Sniper #%d", ++Bandit.number),
+                "Asylum",
+                440,
+                3,
+                10,
+                30,
+                40,
+                40,
+                19,
+                5,
+                8,
+                banda);
     }
 
 

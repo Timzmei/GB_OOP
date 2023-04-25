@@ -1,19 +1,26 @@
 package units;
 
+import java.util.ArrayList;
+
 public class Mage extends Unit implements Healer, Warrior{
 
-    public Mage() {
-        super(String.format("Mage #%d", ++Mage.number));
-        super.faction = "Academy";
-        super.cost = 160;
-        super.damage = 4;
-        super.defense = 12;
-        super.level = 2;
-        super.maxHp = 16;
-        super.hp = maxHp;
+    protected float maxMana, mana;
 
-        super.movement = 19;
-        super.speed = 5;
+    public Mage(ArrayList<Unit> banda) {
+        super(String.format("Mage #%d", ++Bandit.number),
+                "Academy",
+                160,
+                2,
+                12,
+                4,
+                16,
+                16,
+                19,
+                5,
+                5,
+                banda);
+        this.mana = 20;
+        this.maxMana = 20;
     }
 
     @Override
@@ -49,4 +56,16 @@ public class Mage extends Unit implements Healer, Warrior{
         unit.setHp(Math.min(hp + unit.getHp(), unit.getMaxHp()));
     }
 
+    @Override
+    public void step() {
+        if (this.hp > 0 && mana > 0) {
+            for (Unit unit : banda) {
+                if (unit.hp < unit.maxHp) {
+                    unit.setHp(-damage);
+                    this.mana--;
+                    return;
+                }
+            }
+        }
+    }
 }

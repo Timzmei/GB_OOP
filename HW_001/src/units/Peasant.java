@@ -1,19 +1,22 @@
 package units;
 
+import java.util.ArrayList;
+
 public class Peasant extends Unit implements Warrior, Healer{
 
-    public Peasant() {
-        super(String.format("Peasant #%d", ++Peasant.number));
-        super.faction = "Haven";
-        super.cost = 15;
-        super.damage = 3;
-        super.defense = 7;
-        super.level = 1;
-        super.maxHp = 10;
-        super.hp = maxHp;
-
-        super.movement = 18;
-        super.speed = 2;
+    public Peasant(ArrayList<Unit> banda) {
+        super(String.format("Peasant #%d", ++Bandit.number),
+                "Haven",
+                15,
+                1,
+                7,
+                3,
+                10,
+                10,
+                18,
+                2,
+                1,
+                banda);
     }
 
     @Override
