@@ -50,6 +50,23 @@ public class Main {
         team3.addAll(banda2);
         team3.sort((o1, o2) -> o2.getInitiative() - o1.getInitiative());
 
+
+
+        System.out.println("[Команда 1]");
+        banda1.forEach(n -> n.getInfo());
+        System.out.println("\n[Команда 2]");
+        banda2.forEach(n -> n.getInfo());
+
+        System.out.println("\n[Инициатива]");
+        System.out.println(team3);
+
+        System.out.println("-".repeat(15));
+        team3.forEach(n -> n.step());
+        System.out.println("\n[Команда 1]");
+        banda1.forEach(n -> n.getInfo());
+        System.out.println("\n[Команда 2]");
+        banda2.forEach(n -> n.getInfo());
+
 //        List<Unit> list = new ArrayList<>();
 //        list.add(new Bandit());
 //        list.add(new Sniper());
