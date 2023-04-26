@@ -60,8 +60,8 @@ public class Main {
         System.out.println("\n[Инициатива]");
         System.out.println(team3);
 
-        System.out.println("-".repeat(15));
-        team3.forEach(n -> n.step());
+        banda1.forEach(n -> n.step(banda2));
+        banda2.forEach(n -> n.step(banda1));
         System.out.println("\n[Команда 1]");
         banda1.forEach(n -> n.getInfo());
         System.out.println("\n[Команда 2]");

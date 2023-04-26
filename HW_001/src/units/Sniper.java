@@ -2,7 +2,7 @@ package units;
 
 import java.util.ArrayList;
 
-public class Sniper extends Unit implements Warrior {
+public class Sniper extends Shooter implements Warrior {
     public Sniper(ArrayList<Unit> banda) {
         super(String.format("Sniper #%d", ++Bandit.number),
                 "Asylum",
@@ -15,6 +15,9 @@ public class Sniper extends Unit implements Warrior {
                 19,
                 5,
                 8,
+                5,
+                10,
+                12,
                 banda);
     }
 
@@ -47,5 +50,22 @@ public class Sniper extends Unit implements Warrior {
         } else {
             unit.setHp(0);
         }
+    }
+
+    @Override
+    public void step(ArrayList<Unit> enemy) {
+        if (die() || currentCountBullet <= 0) {
+            return;
+        }
+        attack(findNearUnit(enemy));
+        for (Unit unit : banda) {
+            if (unit instanceof Peasant) {
+                if (!unit.die() && ((Peasant)unit).readiness) {
+                    ((Peasant)unit).readiness = false;
+                    return;
+                }
+            }
+        }
+        this.currentCountBullet--;
     }
 }

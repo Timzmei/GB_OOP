@@ -21,6 +21,8 @@ public abstract class Unit implements GameInterface{
     protected int initiative;
     protected ArrayList<Unit> banda;
 
+    protected Coordinate coordinate;
+
     static {
         Unit.number = 0;
         Unit.r = new Random();
@@ -48,6 +50,15 @@ public abstract class Unit implements GameInterface{
         this.speed = speed;
         this.initiative = initiative;
         this.banda = banda;
+        this.coordinate = new Coordinate(0, 0);
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 
     public int getInitiative() {
@@ -119,12 +130,37 @@ public abstract class Unit implements GameInterface{
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Unit> enemy) {
 
     }
 
     private void setDefense(int defense) {
         this.defense = defense;
+    }
+
+    boolean die(){
+        if (hp <= 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    void attack(Unit target){
+        target.setHp(damage);
+    }
+
+    public Unit findNearUnit(ArrayList<Unit> team){
+        Unit nearUnit = null;
+        float minDist = Float.MAX_VALUE;
+        for (Unit unit : team) {
+            float dist = unit.coordinate.distance(this.coordinate);
+            if (minDist > dist) {
+                nearUnit = unit;
+                minDist = dist;
+            }
+        }
+        return nearUnit;
     }
 
 

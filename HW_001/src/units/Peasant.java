@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Peasant extends Unit implements Warrior, Healer{
 
+    protected boolean readiness;
+
     public Peasant(ArrayList<Unit> banda) {
         super(String.format("Peasant #%d", ++Bandit.number),
                 "Haven",
@@ -17,6 +19,7 @@ public class Peasant extends Unit implements Warrior, Healer{
                 2,
                 1,
                 banda);
+        this.readiness = true;
     }
 
     @Override
@@ -49,6 +52,13 @@ public class Peasant extends Unit implements Warrior, Healer{
             unit.setHp(unit.getHp() - damage);
         } else {
             unit.setHp(0);
+        }
+    }
+
+    @Override
+    public void step(ArrayList<Unit> enemy) {
+        if (!readiness) {
+            readiness = true;
         }
     }
 }

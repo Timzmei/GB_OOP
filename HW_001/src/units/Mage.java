@@ -57,7 +57,7 @@ public class Mage extends Unit implements Healer, Warrior{
     }
 
     @Override
-    public void step() {
+    public void step(ArrayList<Unit> enemy) {
         if (this.hp > 0 && mana > 0) {
             for (Unit unit : banda) {
                 if (unit.hp < unit.maxHp) {

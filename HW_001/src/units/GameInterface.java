@@ -1,8 +1,10 @@
 package units;
 
+import java.util.ArrayList;
+
 public interface GameInterface {
 
     void getInfo();
 
-    void step();
+    void step(ArrayList<Unit> enemy);
 }
