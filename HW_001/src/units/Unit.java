@@ -19,7 +19,7 @@ public abstract class Unit implements GameInterface{
     protected int movement;
     protected int speed;
     protected int initiative;
-    protected ArrayList<Unit> banda;
+    protected Banda banda;
 
     protected Coordinate coordinate;
 
@@ -37,7 +37,7 @@ public abstract class Unit implements GameInterface{
 //    }
 
 
-    public Unit(String name, String faction, int cost, int level, int defense, int damage, int maxHp, int hp, int movement, int speed, int initiative, ArrayList banda) {
+    public Unit(String name, String faction, int cost, int level, int defense, int damage, int maxHp, int hp, int movement, int speed, int initiative, Banda banda) {
         this.name = name;
         this.faction = faction;
         this.cost = cost;
@@ -134,6 +134,11 @@ public abstract class Unit implements GameInterface{
 
     }
 
+    @Override
+    public void step() {
+
+    }
+
     private void setDefense(int defense) {
         this.defense = defense;
     }
@@ -150,14 +155,16 @@ public abstract class Unit implements GameInterface{
         target.setHp(damage);
     }
 
-    public Unit findNearUnit(ArrayList<Unit> team){
+    public Unit findNearUnit(ArrayList<Unit> banda){
         Unit nearUnit = null;
         float minDist = Float.MAX_VALUE;
-        for (Unit unit : team) {
-            float dist = unit.coordinate.distance(this.coordinate);
-            if (minDist > dist) {
-                nearUnit = unit;
-                minDist = dist;
+        for (Unit unit : banda) {
+            if (!unit.banda.getName().equals(this.banda.getName())) {
+                float dist = unit.coordinate.distance(this.coordinate);
+                if (minDist > dist) {
+                    nearUnit = unit;
+                    minDist = dist;
+                }
             }
         }
         return nearUnit;

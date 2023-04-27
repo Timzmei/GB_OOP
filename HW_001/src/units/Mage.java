@@ -6,7 +6,7 @@ public class Mage extends Unit implements Healer, Warrior{
 
     protected float maxMana, mana;
 
-    public Mage(ArrayList<Unit> banda) {
+    public Mage(Banda banda) {
         super(String.format("Mage #%d", ++Bandit.number),
                 "Academy",
                 160,
@@ -59,7 +59,7 @@ public class Mage extends Unit implements Healer, Warrior{
     @Override
     public void step(ArrayList<Unit> enemy) {
         if (this.hp > 0 && mana > 0) {
-            for (Unit unit : banda) {
+            for (Unit unit : banda.getUnitArrayList()) {
                 if (unit.hp < unit.maxHp) {
                     unit.setHp(-damage);
                     this.mana--;

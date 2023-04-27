@@ -6,7 +6,7 @@ public class Peasant extends Unit implements Warrior, Healer{
 
     protected boolean readiness;
 
-    public Peasant(ArrayList<Unit> banda) {
+    public Peasant(Banda banda) {
         super(String.format("Peasant #%d", ++Bandit.number),
                 "Haven",
                 15,

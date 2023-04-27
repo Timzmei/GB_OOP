@@ -3,7 +3,7 @@ package units;
 import java.util.ArrayList;
 
 public class Monk extends Unit implements Healer{
-    public Monk(ArrayList<Unit> banda) {
+    public Monk(Banda banda) {
         super(String.format("Monk #%d", ++Bandit.number),
                 "Asylum",
                 550,

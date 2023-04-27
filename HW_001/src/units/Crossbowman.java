@@ -3,7 +3,7 @@ package units;
 import java.util.ArrayList;
 
 public class Crossbowman extends Shooter implements Warrior{
-    public Crossbowman(ArrayList<Unit> banda) {
+    public Crossbowman(Banda banda) {
         super(String.format("Crossbowman #%d", ++Bandit.number),
                 "Asylum",
                 32,
@@ -55,7 +55,7 @@ public class Crossbowman extends Shooter implements Warrior{
             return;
         }
         attack(findNearUnit(enemy));
-        for (Unit unit : banda) {
+        for (Unit unit : banda.getUnitArrayList()) {
             if (unit instanceof Peasant) {
                 if (!unit.die() && ((Peasant)unit).readiness) {
                     ((Peasant)unit).readiness = false;

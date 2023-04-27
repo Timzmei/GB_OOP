@@ -3,7 +3,7 @@ package units;
 import java.util.ArrayList;
 
 public class Pikeman extends Unit implements Warrior{
-    public Pikeman(ArrayList<Unit> banda) {
+    public Pikeman(Banda banda) {
         super(String.format("Pikeman #%d", ++Bandit.number),
                 "Asylum",
                 150,
