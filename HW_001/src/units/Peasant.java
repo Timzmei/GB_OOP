@@ -6,7 +6,7 @@ public class Peasant extends Unit implements Warrior, Healer{
 
     protected boolean readiness;
 
-    public Peasant(Banda banda) {
+    public Peasant(Banda banda, int x, int y) {
         super(String.format("Peasant #%d", ++Bandit.number),
                 "Haven",
                 15,
@@ -18,15 +18,18 @@ public class Peasant extends Unit implements Warrior, Healer{
                 18,
                 2,
                 1,
-                banda);
+                banda,
+                x,
+                y);
         this.readiness = true;
     }
 
     @Override
     public String toString() {
-        return "Peasant{" +
-                "name='" + name + '\'' +
-                '}';
+        return name +
+                " Hp:" + hp +
+                " Dfns:" + defense +
+                " Dmg:" + damage;
     }
 
     @Override

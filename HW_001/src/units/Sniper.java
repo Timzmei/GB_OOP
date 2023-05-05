@@ -3,7 +3,7 @@ package units;
 import java.util.ArrayList;
 
 public class Sniper extends Shooter implements Warrior {
-    public Sniper(Banda banda) {
+    public Sniper(Banda banda, int x, int y) {
         super(String.format("Sniper #%d", ++Bandit.number),
                 "Asylum",
                 440,
@@ -18,16 +18,19 @@ public class Sniper extends Shooter implements Warrior {
                 5,
                 10,
                 12,
-                banda);
+                banda,
+                x,
+                y);
     }
 
 
 
     @Override
     public String toString() {
-        return "Sniper{" +
-                "name='" + name + '\'' +
-                '}';
+        return name +
+                " Hp:" + hp +
+                " Dfns:" + defense +
+                " Dmg:" + damage;
     }
 
 

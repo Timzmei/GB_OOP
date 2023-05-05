@@ -3,7 +3,7 @@ package units;
 import java.util.ArrayList;
 
 public class Crossbowman extends Shooter implements Warrior{
-    public Crossbowman(Banda banda) {
+    public Crossbowman(Banda banda, int x, int y) {
         super(String.format("Crossbowman #%d", ++Bandit.number),
                 "Asylum",
                 32,
@@ -18,14 +18,17 @@ public class Crossbowman extends Shooter implements Warrior{
                 4,
                 30,
                 18,
-                banda);
+                banda,
+                x,
+                y);
     }
 
     @Override
     public String toString() {
-        return "Crossbowman{" +
-                "name='" + name + '\'' +
-                '}';
+        return name +
+                " Hp:" + hp +
+                " Dfns:" + defense +
+                " Dmg:" + damage;
     }
 
     @Override

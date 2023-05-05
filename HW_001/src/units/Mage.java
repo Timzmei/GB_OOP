@@ -6,7 +6,7 @@ public class Mage extends Unit implements Healer, Warrior{
 
     protected float maxMana, mana;
 
-    public Mage(Banda banda) {
+    public Mage(Banda banda, int x, int y) {
         super(String.format("Mage #%d", ++Bandit.number),
                 "Academy",
                 160,
@@ -18,16 +18,19 @@ public class Mage extends Unit implements Healer, Warrior{
                 19,
                 5,
                 5,
-                banda);
+                banda,
+                x,
+                y);
         this.mana = 20;
         this.maxMana = 20;
     }
 
     @Override
     public String toString() {
-        return "Mage{" +
-                "name='" + name + '\'' +
-                '}';
+        return name +
+                " Hp:" + hp +
+                " Dfns:" + defense +
+                " Dmg:" + damage;
     }
 
     @Override

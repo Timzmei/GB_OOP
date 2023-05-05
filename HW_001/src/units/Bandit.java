@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Bandit extends Unit implements Warrior{
 
-    public Bandit(Banda banda) {
+    public Bandit(Banda banda, int x, int y) {
         super(String.format("Bandit #%d", ++Bandit.number),
                 "Asylum",
                 20,
@@ -16,7 +16,9 @@ public class Bandit extends Unit implements Warrior{
                 23,
                 7,
                 6,
-                banda);
+                banda,
+                x,
+                y);
 
     }
 
@@ -43,8 +45,9 @@ public class Bandit extends Unit implements Warrior{
 
     @Override
     public String toString() {
-        return "Bandit{" +
-                "name='" + name + '\'' +
-                '}';
+        return name +
+                " Hp:" + hp +
+                " Dfns:" + defense +
+                " Dmg:" + damage;
     }
 }

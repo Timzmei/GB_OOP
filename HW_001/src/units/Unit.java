@@ -37,7 +37,7 @@ public abstract class Unit implements GameInterface{
 //    }
 
 
-    public Unit(String name, String faction, int cost, int level, int defense, int damage, int maxHp, int hp, int movement, int speed, int initiative, Banda banda) {
+    public Unit(String name, String faction, int cost, int level, int defense, int damage, int maxHp, int hp, int movement, int speed, int initiative, Banda banda, int x, int y) {
         this.name = name;
         this.faction = faction;
         this.cost = cost;
@@ -50,7 +50,7 @@ public abstract class Unit implements GameInterface{
         this.speed = speed;
         this.initiative = initiative;
         this.banda = banda;
-        this.coordinate = new Coordinate(0, 0);
+        this.coordinate = new Coordinate(x, y);
     }
 
     public Coordinate getCoordinate() {
@@ -114,19 +114,8 @@ public abstract class Unit implements GameInterface{
     }
 
     @Override
-    public void getInfo() {
-        System.out.println("Unit{" +
-                "name='" + name + '\'' +
-                ", faction='" + faction + '\'' +
-                ", cost=" + cost +
-                ", level=" + level +
-                ", defense=" + defense +
-                ", damage=" + damage +
-                ", hp=" + hp +
-                ", maxHp=" + maxHp +
-                ", movement=" + movement +
-                ", speed=" + speed +
-                '}');
+    public String getInfo() {
+        return toString();
     }
 
     @Override
@@ -170,5 +159,11 @@ public abstract class Unit implements GameInterface{
         return nearUnit;
     }
 
-
+    @Override
+    public String toString() {
+        return name +
+                " Hp:" + hp +
+                " Dfns:" + defense +
+                " Dmg:" + damage;
+    }
 }

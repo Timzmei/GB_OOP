@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface GameInterface {
 
-    void getInfo();
+    String getInfo();
 
     void step(ArrayList<Unit> enemy);
     void step();
