@@ -7,7 +7,7 @@ public class Mage extends Unit implements Healer, Warrior{
     protected float maxMana, mana;
 
     public Mage(Banda banda, int x, int y) {
-        super(String.format("Mage #%d", ++Bandit.number),
+        super(String.format("Mage #%d", ++Mage.number),
                 "Academy",
                 160,
                 2,
@@ -55,8 +55,8 @@ public class Mage extends Unit implements Healer, Warrior{
     }
 
     @Override
-    public void healer(Unit unit, int hp) {
-        unit.setHp(Math.min(hp + unit.getHp(), unit.getMaxHp()));
+    public void healer(Unit unit) {
+        unit.setHp(Math.min(unit.getHp(), unit.getMaxHp()));
     }
 
     @Override

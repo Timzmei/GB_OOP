@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Monk extends Unit implements Healer{
     public Monk(Banda banda, int x, int y) {
-        super(String.format("Monk #%d", ++Bandit.number),
+        super(String.format("Monk #%d", ++Monk.number),
                 "Asylum",
                 550,
                 3,
@@ -21,8 +21,8 @@ public class Monk extends Unit implements Healer{
     }
 
     @Override
-    public void healer(Unit unit, int hp) {
-        unit.setHp(Math.min(hp + unit.getHp(), unit.getMaxHp()));
+    public void healer(Unit unit) {
+        unit.setHp(Math.min(unit.getHp(), unit.getMaxHp()));
     }
 
     @Override
@@ -32,4 +32,33 @@ public class Monk extends Unit implements Healer{
                 " Dfns:" + defense +
                 " Dmg:" + damage;
     }
+
+    @Override
+    public void step(ArrayList<Unit> enemy) {
+
+        Unit target = findNearUnit(banda.getUnitArrayList());
+        attack(target);
+    }
+
+    @Override
+    public Unit findNearUnit(ArrayList<Unit> banda){
+        Unit nearUnit = null;
+        float minDist = Float.MAX_VALUE;
+        for (Unit unit : banda) {
+            if (unit.banda.getName().equals(this.banda.getName())) {
+                float dist = unit.coordinate.distance(this.coordinate);
+                if (minDist > dist) {
+                    nearUnit = unit;
+                    minDist = dist;
+                }
+            }
+        }
+        return nearUnit;
+    }
+
+    @Override
+    void attack(Unit target){
+        target.setHp(damage);
+    }
+
 }

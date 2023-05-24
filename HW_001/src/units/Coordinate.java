@@ -14,6 +14,13 @@ public class Coordinate {
         return (float) Math.sqrt(dx*dx+dy*dy);
     }
 
+    public  int[] distanceXY(Coordinate coordinate){
+        int[] result = new int[2];
+        result[0] = coordinate.x - this.x;
+        result[1] = coordinate.y - this.y;
+        return result;
+    }
+
     public int getX() {
         return x;
     }

@@ -31,8 +31,4 @@ public abstract class Shooter extends Unit {
         this.currentCountBullet--;
     }
 
-    @Override
-    public void step() {
-
-    }
 }

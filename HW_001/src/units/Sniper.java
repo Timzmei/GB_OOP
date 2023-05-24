@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Sniper extends Shooter implements Warrior {
     public Sniper(Banda banda, int x, int y) {
-        super(String.format("Sniper #%d", ++Bandit.number),
+        super(String.format("Sniper #%d", ++Sniper.number),
                 "Asylum",
                 440,
                 3,

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pikeman extends Unit implements Warrior{
     public Pikeman(Banda banda, int x, int y) {
-        super(String.format("Pikeman #%d", ++Bandit.number),
+        super(String.format("Pikeman #%d", ++Pikeman.number),
                 "Asylum",
                 150,
                 2,

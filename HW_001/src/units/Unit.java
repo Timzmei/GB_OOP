@@ -106,26 +106,12 @@ public abstract class Unit implements GameInterface{
     }
 
     public void setHp(int divHp) {
-        if (divHp <= 0) {
-            this.hp = 0;
-        } else {
-            this.hp = divHp;
-        }
+        this.hp = Math.max(divHp, 0);
     }
 
     @Override
     public String getInfo() {
         return toString();
-    }
-
-    @Override
-    public void step(ArrayList<Unit> enemy) {
-
-    }
-
-    @Override
-    public void step() {
-
     }
 
     private void setDefense(int defense) {
@@ -165,5 +151,77 @@ public abstract class Unit implements GameInterface{
                 " Hp:" + hp +
                 " Dfns:" + defense +
                 " Dmg:" + damage;
+    }
+
+    @Override
+    public void step(ArrayList<Unit> enemy) {
+        if (die()) {
+            return;
+        }
+        Unit target = findNearUnit(enemy);
+        if (target.coordinate.distance(this.coordinate) < 2) {
+            attack(target);
+        }else {
+            move(target);
+        }
+    }
+
+    @Override
+    public String introduce() {
+        return this + " " + this.name;
+    }
+
+    protected void move(Unit target){
+        int dx = target.coordinate.distanceXY(this.coordinate)[0];
+        int dy = target.coordinate.distanceXY(this.coordinate)[1];
+        if (Math.abs(dx) < Math.abs(dy)){
+            moveY(dx, dy, true);
+        }else {
+            moveX(dx, dy, true);
+        }
+    }
+
+    private void moveX(int dx, int dy, boolean flag){
+        if (dx > 0) {
+            if (isEmptyPosition(this.coordinate.x-1, this.coordinate.y)) {
+                this.coordinate.x--;
+            }else if(flag){
+                moveY(dx,dy, false);
+            }
+        }else {
+            if (isEmptyPosition(this.coordinate.x+1, this.coordinate.y)) {
+                this.coordinate.x++;
+            }else if(flag){
+                moveY(dx,dy, false);
+            }
+        }
+    }
+    private void moveY(int dx, int dy, boolean flag){
+        if (dy > 0) {
+            if (isEmptyPosition(this.coordinate.x, this.coordinate.y-1)) {
+                this.coordinate.y--;
+            }else if(flag){
+                moveX(dx,dy, false);
+            }
+        }else {
+            if (isEmptyPosition(this.coordinate.x, this.coordinate.y+1)) {
+                this.coordinate.y++;
+            }else if(flag){
+                moveX(dx,dy, false);
+            }
+        }
+    }
+
+
+
+    protected boolean isEmptyPosition(int x, int y){
+        for (Unit unit: banda.getUnitArrayList()) {
+            if (unit.coordinate.x == x && unit.coordinate.y == y) {
+                if (!unit.die()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

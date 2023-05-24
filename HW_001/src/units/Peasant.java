@@ -7,7 +7,7 @@ public class Peasant extends Unit implements Warrior, Healer{
     protected boolean readiness;
 
     public Peasant(Banda banda, int x, int y) {
-        super(String.format("Peasant #%d", ++Bandit.number),
+        super(String.format("Peasant #%d", ++Peasant.number),
                 "Haven",
                 15,
                 1,
@@ -33,8 +33,8 @@ public class Peasant extends Unit implements Warrior, Healer{
     }
 
     @Override
-    public void healer(Unit unit, int hp) {
-        unit.setHp(Math.min(hp/2 + unit.getHp(), unit.getMaxHp()));
+    public void healer(Unit unit) {
+        unit.setHp(Math.min(unit.getHp(), unit.getMaxHp()));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Peasant extends Unit implements Warrior, Healer{
         System.out.println(this.name + " attack " + unit.name);
 
         if (this.damage > unit.defense) {
-            setUnitDamage(unit, this.damage + unit.getDefense());
+            setUnitDamage(unit, this.damage - unit.getDefense());
         } else {
             setUnitDamage(unit, (this.damage / unit.getDefense()));
         }

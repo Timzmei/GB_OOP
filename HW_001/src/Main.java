@@ -21,10 +21,10 @@ public class Main {
                     banda1.addUnit(new Mage(banda1, i, 1));
                     break;
                 case 2:
-                    banda1.addUnit(new Crossbowman(banda1, i, 1));
+                    banda1.addUnit(new Infantry(banda1, i, 1));
                     break;
                 case 3:
-                    banda1.addUnit(new Bandit(banda1, i, 1));
+                    banda1.addUnit(new Infantry(banda1, i, 1));
                     break;
             }
         }
@@ -38,7 +38,7 @@ public class Main {
                     banda2.addUnit(new Mage(banda2,i, 10));
                     break;
                 case 2:
-                    banda2.addUnit(new Sniper(banda2, i, 10));
+                    banda2.addUnit(new Pikeman(banda2, i, 10));
                     break;
                 case 3:
                     banda2.addUnit(new Monk(banda2, i, 10));

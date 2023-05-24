@@ -7,5 +7,5 @@ public interface GameInterface {
     String getInfo();
 
     void step(ArrayList<Unit> enemy);
-    void step();
+    String introduce();
 }

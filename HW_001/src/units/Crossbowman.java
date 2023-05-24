@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Crossbowman extends Shooter implements Warrior{
     public Crossbowman(Banda banda, int x, int y) {
-        super(String.format("Crossbowman #%d", ++Bandit.number),
+        super(String.format("Crossbowman #%d", ++Crossbowman.number),
                 "Asylum",
                 32,
                 1,
